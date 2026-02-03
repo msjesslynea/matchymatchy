@@ -5,11 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MUET Task 2: Reason vs. Method</title>
 
-  <!-- ✅ Correct CDNs (no markdown brackets) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -18,7 +16,6 @@
     :root { color-scheme: light; }
     body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
 
-    /* Gen Z vibe: gradient + floating blobs */
     .grotesk { font-family: "Space Grotesk", Inter, system-ui, sans-serif; }
     .bg-aurora {
       background:
@@ -43,51 +40,31 @@
       -webkit-backdrop-filter: blur(10px);
     }
 
-    /* Buttons */
-    .btn {
-      transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
-    }
+    .btn { transition: transform .12s ease, box-shadow .12s ease, background .12s ease; }
     .btn:active { transform: scale(.98); }
     .btn:hover { box-shadow: 0 12px 25px rgba(2,6,23,.12); }
 
-    /* Animated entrance */
     .fade-in { animation: fadeIn .35s ease-out; }
     @keyframes fadeIn { from { opacity:0; transform: translateY(8px);} to { opacity:1; transform: translateY(0);} }
 
-    /* Confetti (simple + lightweight) */
-    .confetti {
-      position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 9999;
-    }
+    .confetti { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 9999; }
     .confetti i {
-      position: absolute; top: -10px;
-      width: 10px; height: 18px; border-radius: 3px;
-      animation: fall 1.2s linear forwards;
-      opacity: .9;
+      position: absolute; top: -10px; width: 10px; height: 18px; border-radius: 3px;
+      animation: fall 1.2s linear forwards; opacity: .9;
     }
-    @keyframes fall {
-      to { transform: translateY(110vh) rotate(560deg); opacity: 0.95; }
-    }
+    @keyframes fall { to { transform: translateY(110vh) rotate(560deg); opacity: 0.95; } }
 
-    /* Inputs */
-    textarea, input {
-      outline: none;
-    }
-    textarea:focus, input:focus {
-      box-shadow: 0 0 0 4px rgba(45,212,191,.18);
-      border-color: rgba(13,148,136,.6) !important;
-    }
+    textarea, input { outline: none; }
+    textarea:focus, input:focus { box-shadow: 0 0 0 4px rgba(45,212,191,.18); border-color: rgba(13,148,136,.6) !important; }
 
-    /* Nice scrollbar for textarea */
     textarea::-webkit-scrollbar { width: 10px; }
     textarea::-webkit-scrollbar-track { background: rgba(226,232,240,.8); border-radius: 8px; }
     textarea::-webkit-scrollbar-thumb { background: rgba(148,163,184,.95); border-radius: 8px; }
     textarea::-webkit-scrollbar-thumb:hover { background: rgba(100,116,139,.95); }
 
-    /* Loader */
     .loader { border: 3px solid rgba(255,255,255,.35); border-top: 3px solid #14b8a6; width: 20px; height: 20px; border-radius: 999px; animation: spin 1s linear infinite; display:inline-block; }
     @keyframes spin { to { transform: rotate(360deg);} }
 
-    /* Tiny shake on wrong answer */
     .shake { animation: shake .28s ease-in-out; }
     @keyframes shake {
       0%,100% { transform: translateX(0); }
@@ -97,19 +74,11 @@
   </style>
 
   <script>
-    // Optional: Tailwind config (keeps CDN but gives nicer defaults)
-    tailwind.config = {
-      theme: {
-        extend: {
-          borderRadius: { '2xl': '1.25rem' }
-        }
-      }
-    }
+    tailwind.config = { theme: { extend: { borderRadius: { '2xl': '1.25rem' } } } };
   </script>
 </head>
 
 <body class="bg-aurora text-slate-900 min-h-screen flex flex-col">
-  <!-- Top Nav -->
   <header class="sticky top-0 z-50">
     <div class="mx-auto max-w-4xl px-4 pt-4">
       <div class="glass rounded-2xl px-5 py-4 flex items-center justify-between">
@@ -125,7 +94,7 @@
 
         <div class="flex items-center gap-2">
           <span class="chip text-xs font-semibold px-3 py-1 rounded-full text-white bg-gradient-to-r from-emerald-500/70 to-teal-500/70">
-            Unit: Environment 🌿
+            Unit: Values 💛
           </span>
         </div>
       </div>
@@ -133,7 +102,6 @@
   </header>
 
   <main class="flex-grow w-full max-w-4xl mx-auto px-4 py-8 space-y-10">
-    <!-- Intro Card -->
     <section class="glass rounded-2xl p-6">
       <div class="flex items-start justify-between gap-4">
         <div>
@@ -161,18 +129,16 @@
       </div>
     </section>
 
-    <!-- Quiz -->
     <section id="quiz-section">
       <div class="flex flex-wrap gap-3 items-center justify-between mb-4">
-        <h2 class="grotesk text-2xl font-bold">Part 1: Swipe-style Quiz (tap)</h2>
+        <h2 class="grotesk text-2xl font-bold">Part 1: Categorization Quiz</h2>
         <div class="flex items-center gap-2">
           <span id="score-display" class="hidden text-xs font-mono px-3 py-1 rounded-full bg-slate-900 text-white">Score: 0/10</span>
-          <span class="chip text-xs font-semibold px-3 py-1 rounded-full text-slate-800">No stress — learn mode ✅</span>
+          <span class="chip text-xs font-semibold px-3 py-1 rounded-full text-slate-800">Learn mode ✅</span>
         </div>
       </div>
 
       <div class="glass rounded-2xl overflow-hidden">
-        <!-- top bar -->
         <div class="px-6 py-4 border-b border-slate-200/60 flex items-center justify-between">
           <div class="text-xs font-semibold text-slate-600 uppercase tracking-wider">
             Statement <span id="q-current" class="text-slate-900">1</span> of 10
@@ -183,9 +149,7 @@
         </div>
 
         <div class="p-7 md:p-10 min-h-[320px] flex flex-col justify-center items-center text-center fade-in" id="question-container">
-          <p id="question-text" class="grotesk text-xl md:text-2xl font-semibold text-slate-900 mb-7 leading-relaxed">
-            Loading...
-          </p>
+          <p id="question-text" class="grotesk text-xl md:text-2xl font-semibold text-slate-900 mb-7 leading-relaxed">Loading...</p>
 
           <div class="grid sm:grid-cols-2 gap-4 w-full max-w-xl" id="options-container">
             <button onclick="checkAnswer('Reason')" class="btn py-4 px-6 rounded-2xl border border-blue-200 bg-gradient-to-br from-white to-blue-50 hover:from-blue-50 hover:to-white text-blue-700 font-bold">
@@ -220,57 +184,53 @@
       </div>
     </section>
 
-    <!-- Writing -->
     <section id="writing-section" class="pt-4">
       <div class="glass rounded-2xl p-6 border border-slate-200/60">
         <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
           <h2 class="grotesk text-2xl font-bold">Part 2: Writing Application</h2>
           <span class="chip px-3 py-1 rounded-full text-xs font-semibold text-slate-800">Write METHODS only 🛠️</span>
         </div>
-        <div class="rounded-2xl p-4 border border-orange-200 bg-gradient-to-br from-orange-50 to-white text-sm text-orange-900">
-          <span class="font-bold">Topic:</span> Compulsory Recycling in Schools ♻️
+
+        <div class="rounded-2xl p-4 border border-amber-200 bg-gradient-to-br from-amber-50 to-white text-sm text-amber-900">
+          <span class="font-bold">Topic:</span> Kindness is a quality that is gradually disappearing among us today. 💛
         </div>
 
         <div class="space-y-5 mt-6">
-          <!-- Card 1 -->
           <div class="rounded-2xl p-5 border border-slate-200 bg-white/70">
             <p class="text-slate-900 font-semibold mb-3">
               <span class="text-[11px] font-extrabold text-slate-500 uppercase block">Reason 1</span>
-              To instill lifelong habits of sustainability.
+              It builds stronger communities and reduces conflict.
             </p>
-            <textarea id="input-1" rows="3" class="w-full border border-slate-300 rounded-2xl p-4 bg-white" placeholder="Write your Method (How)… e.g., By introducing a weekly recycling routine with roles and checkpoints."></textarea>
+            <textarea id="input-1" rows="3" class="w-full border border-slate-300 rounded-2xl p-4 bg-white" placeholder="Write your Method (How)… Focus on actions/steps (e.g., school or community)."></textarea>
           </div>
 
-          <!-- Card 2 -->
           <div class="rounded-2xl p-5 border border-slate-200 bg-white/70">
             <p class="text-slate-900 font-semibold mb-3">
               <span class="text-[11px] font-extrabold text-slate-500 uppercase block">Reason 2</span>
-              To reduce the school’s carbon footprint.
+              It improves mental health and emotional well-being.
             </p>
-            <textarea id="input-2" rows="3" class="w-full border border-slate-300 rounded-2xl p-4 bg-white" placeholder="Write your Method (How)… e.g., By separating waste and reducing landfill pickups through scheduled collection."></textarea>
+            <textarea id="input-2" rows="3" class="w-full border border-slate-300 rounded-2xl p-4 bg-white" placeholder="Write your Method (How)… Explain what people can DO to bring kindness back."></textarea>
           </div>
 
-          <!-- Card 3 -->
           <div class="rounded-2xl p-5 border border-slate-200 bg-white/70">
             <p class="text-slate-900 font-semibold mb-3">
               <span class="text-[11px] font-extrabold text-slate-500 uppercase block">Reason 3</span>
-              To generate income for the Student Council.
+              It creates a positive culture in schools and workplaces.
             </p>
-            <textarea id="input-3" rows="3" class="w-full border border-slate-300 rounded-2xl p-4 bg-white" placeholder="Write your Method (How)… e.g., By selling sorted recyclables to a partner company and recording profit monthly."></textarea>
+            <textarea id="input-3" rows="3" class="w-full border border-slate-300 rounded-2xl p-4 bg-white" placeholder="Write your Method (How)… Use 'By… / Through… / First… Next…'"></textarea>
           </div>
         </div>
 
-        <!-- Submit panel -->
         <div class="mt-7 rounded-2xl p-6 text-white bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700">
           <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
             <h3 class="grotesk text-xl font-bold">Submit Your Work</h3>
-            <span class="text-xs text-slate-300">Tip: keep each method = 1–2 sentences, action-focused.</span>
+            <span class="text-xs text-slate-300">Tip: 1–2 sentences, action-focused.</span>
           </div>
 
           <div class="grid md:grid-cols-2 gap-4 mb-5">
             <div>
               <label class="block text-xs text-slate-300 mb-1">Name</label>
-              <input type="text" id="student-name" class="w-full bg-white/10 border border-slate-600 rounded-2xl p-3 text-white placeholder:text-slate-400" placeholder="e.g., Aina"/>
+              <input type="text" id="student-name" class="w-full bg-white/10 border border-slate-600 rounded-2xl p-3 text-white placeholder:text-slate-400" placeholder="e.g., Firah"/>
             </div>
             <div>
               <label class="block text-xs text-slate-300 mb-1">Class</label>
@@ -283,10 +243,6 @@
           </button>
 
           <div id="submit-status" class="hidden mt-4 text-center p-3 rounded-2xl bg-white/10 border border-slate-600"></div>
-
-          <p class="mt-4 text-xs text-slate-300">
-            Teacher note: paste your Apps Script web app URL into <span class="font-mono text-slate-200">GOOGLE_SCRIPT_URL</span>.
-          </p>
         </div>
       </div>
     </section>
@@ -294,21 +250,21 @@
 
   <script>
     // --- PASTE YOUR GOOGLE LINK BELOW ---
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyrG3UtGGhpNGfX0OMaK2CjAigehXxSkldvZJClXVrIBH9JevNMg4aU4IzCUpb5C-3_/exec";
+    const GOOGLE_SCRIPT_URL = "";
     // Example: https://script.google.com/macros/s/XXXX/exec
     // ------------------------------------
 
     const questions = [
-      { text: "Schools organize a 'Green Day' every Friday where students bring their own food containers.", type: "Method", explanation: "This describes a specific action/event." },
-      { text: "Trees are planted around the school compound to provide shade and lower the temperature.", type: "Method", explanation: "This describes the physical action." },
-      { text: "The headmaster signs a contract with a local recycling company.", type: "Method", explanation: "This describes a procedural step." },
-      { text: "Reducing paper usage is important because it conserves forest resources.", type: "Reason", explanation: "This explains the logic or benefit." },
-      { text: "Students are required to wash and dry their plastic bottles.", type: "Method", explanation: "This describes physical steps." },
-      { text: "The government implements a 'No Plastic Bag' policy.", type: "Method", explanation: "This describes policy implementation." },
-      { text: "Canteen workers separate organic food scraps into a designated bin.", type: "Method", explanation: "This describes the process." },
-      { text: "It is necessary to educate the youth so they become responsible citizens.", type: "Reason", explanation: "This is a justification." },
-      { text: "A digital scoreboard is used to track the weight of recycled materials.", type: "Method", explanation: "This describes the tool used." },
-      { text: "Schools save money on waste disposal fees by reducing rubbish.", type: "Reason", explanation: "This highlights a financial benefit." }
+      { text: "Students take turns being a 'Kindness Monitor' who notices and praises helpful actions.", type: "Method", explanation: "This describes a structured action/role students do." },
+      { text: "A class 'Thank You Wall' is created where students post short notes of appreciation weekly.", type: "Method", explanation: "This is a specific activity with steps." },
+      { text: "Teachers run a monthly peer-mentoring session pairing seniors with juniors.", type: "Method", explanation: "This describes an organised programme." },
+      { text: "Kindness matters because it reduces stress and makes people feel supported.", type: "Reason", explanation: "This explains the benefit/outcome of kindness." },
+      { text: "Students are encouraged to apologise sincerely and fix mistakes instead of blaming others.", type: "Method", explanation: "This describes actions people should do." },
+      { text: "Schools reward kind behaviour to motivate students to repeat it.", type: "Reason", explanation: "This is a justification/logic for why kindness practices work." },
+      { text: "A 'no mocking' rule is enforced, and students report bullying through a simple form.", type: "Method", explanation: "This shows rules + steps for enforcement/reporting." },
+      { text: "We need kindness so society becomes more united and less hostile.", type: "Reason", explanation: "This is a broad justification." },
+      { text: "Students practise active listening in group tasks by using sentence starters like 'I understand you…'.", type: "Method", explanation: "This is a method (what they do + how they do it)." },
+      { text: "Kindness improves teamwork because people communicate better and trust each other.", type: "Reason", explanation: "This explains the logic/benefit." }
     ];
 
     let currentQIndex = 0, score = 0;
@@ -332,7 +288,6 @@
       document.getElementById('next-btn').classList.add('hidden');
       document.getElementById('question-text').innerText = q.text;
 
-      // re-enable buttons
       const buttons = document.getElementById('options-container').getElementsByTagName('button');
       for (let btn of buttons) {
         btn.disabled = false;
@@ -345,7 +300,7 @@
     function popConfetti() {
       const root = document.createElement('div');
       root.className = 'confetti';
-      const colors = ["#14b8a6","#6366f1","#f472b6","#f59e0b","#22c55e","#0ea5e9"];
+      const colors = ["#14b8a6","#6366f1","#f472b6","#f59e0b","#22c55e","#0ea5e9","#fbbf24"];
 
       for (let i = 0; i < 35; i++) {
         const piece = document.createElement('i');
@@ -366,7 +321,6 @@
       const q = questions[currentQIndex];
       const isCorrect = selected === q.type;
 
-      // disable buttons
       const buttons = document.getElementById('options-container').getElementsByTagName('button');
       for (let btn of buttons) {
         btn.disabled = true;
@@ -377,7 +331,6 @@
       resetFeedbackStyles(fb);
       fb.classList.remove('hidden');
 
-      // always show score chip once quiz starts
       const scoreChip = document.getElementById('score-display');
       scoreChip.classList.remove('hidden');
 
@@ -388,7 +341,6 @@
         fb.innerHTML = `<p class="font-extrabold text-emerald-800">Correct ✅</p>
                         <p class="text-sm text-emerald-700 mt-1">${q.explanation}</p>`;
       } else {
-        // shake container for a quick “oops”
         document.getElementById('question-container').classList.add('shake');
         setTimeout(() => document.getElementById('question-container').classList.remove('shake'), 280);
 
@@ -459,7 +411,6 @@
         });
     }
 
-    // init
     loadQuestion();
   </script>
 </body>
