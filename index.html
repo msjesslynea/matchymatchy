@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUET Task 2: Reason vs. Method</title>
+    <script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
+    <link href="[https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css)" rel="stylesheet">
+    <style>
+        @import url('[https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap)');
+        body { font-family: 'Inter', sans-serif; }
+        .fade-in { animation: fadeIn 0.5s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        textarea::-webkit-scrollbar { width: 8px; }
+        textarea::-webkit-scrollbar-track { background: #f1f1f1; }
+        textarea::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .loader { border: 3px solid #f3f3f3; border-radius: 50%; border-top: 3px solid #0d9488; width: 20px; height: 20px; animation: spin 1s linear infinite; display: inline-block; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+    <header class="bg-teal-700 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-pen-nib text-2xl"></i>
+                <div>
+                    <h1 class="font-bold text-lg md:text-xl leading-tight">MUET Task 2: Writing</h1>
+                    <p class="text-xs text-teal-200">Elaboration Skills: Why (Reason) vs. How (Method)</p>
+                </div>
+            </div>
+            <div class="text-sm font-semibold bg-teal-800 px-3 py-1 rounded-full border border-teal-600">Unit: Environment</div>
+        </div>
+    </header>
+    <main class="flex-grow w-full max-w-4xl mx-auto px-4 py-8 space-y-12">
+        <section class="bg-white rounded-2xl shadow-sm p-6 border-l-4 border-teal-500">
+            <h2 class="text-xl font-bold mb-3 text-slate-800">Understanding the Distinction</h2>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
+                    <h3 class="font-bold text-blue-800 mb-2">The Reason (Why)</h3>
+                    <p class="text-sm text-blue-700">Explains the logic or benefit.</p>
+                </div>
+                <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
+                    <h3 class="font-bold text-emerald-800 mb-2">The Method (How)</h3>
+                    <p class="text-sm text-emerald-700">Explains the physical actions or steps.</p>
+                </div>
+            </div>
+        </section>
+        <section id="quiz-section">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-slate-800">Part 1: Categorization Quiz</h2>
+                <span id="score-display" class="bg-slate-800 text-white px-4 py-1 rounded-full text-sm font-mono hidden">Score: 0/10</span>
+            </div>
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="p-6 bg-slate-100 border-b border-slate-200 flex justify-between items-center">
+                    <span class="text-sm font-semibold text-slate-500 uppercase tracking-wider">Statement <span id="q-current">1</span> of 10</span>
+                    <div class="h-2 w-24 bg-slate-300 rounded-full overflow-hidden"><div id="progress-bar" class="h-full bg-teal-600 transition-all duration-300" style="width: 10%"></div></div>
+                </div>
+                <div class="p-8 min-h-[300px] flex flex-col justify-center items-center text-center fade-in" id="question-container">
+                    <p id="question-text" class="text-xl md:text-2xl font-medium text-slate-800 mb-8 leading-relaxed">Loading...</p>
+                    <div class="flex flex-col sm:flex-row gap-4 w-full max-w-md" id="options-container">
+                        <button onclick="checkAnswer('Reason')" class="flex-1 py-4 px-6 rounded-xl border-2 border-blue-200 bg-white hover:bg-blue-50 transition-all text-blue-600 font-bold">Reason (Why)</button>
+                        <button onclick="checkAnswer('Method')" class="flex-1 py-4 px-6 rounded-xl border-2 border-emerald-200 bg-white hover:bg-emerald-50 transition-all text-emerald-600 font-bold">Method (How)</button>
+                    </div>
+                    <div id="feedback" class="hidden mt-8 w-full max-w-lg p-4 rounded-lg text-left"></div>
+                    <button id="next-btn" onclick="nextQuestion()" class="hidden mt-6 bg-slate-800 text-white px-8 py-3 rounded-lg hover:bg-slate-900 transition-colors font-semibold">Next Statement <i class="fa-solid fa-arrow-right ml-2"></i></button>
+                </div>
+                <div id="quiz-end" class="hidden p-10 text-center">
+                    <div class="mb-6"><i class="fa-solid fa-trophy text-5xl text-yellow-400 mb-4 block"></i><h3 class="text-2xl font-bold text-slate-800">Quiz Completed!</h3></div>
+                    <p class="text-lg text-slate-600 mb-6">You scored <span id="final-score" class="font-bold text-teal-600 text-xl">0</span> out of 10.</p>
+                    <button onclick="scrollToWriting()" class="bg-teal-600 text-white px-8 py-3 rounded-lg hover:bg-teal-700 shadow-md transition-all">Proceed to Writing Task</button>
+                </div>
+            </div>
+        </section>
+        <section id="writing-section" class="pt-8 border-t border-slate-200">
+            <div class="mb-6">
+                <h2 class="text-2xl font-bold text-slate-800 mb-2">Part 2: Writing Application</h2>
+                <div class="bg-orange-50 border border-orange-200 rounded-lg p-4 text-sm text-orange-800">Topic: Compulsory Recycling in Schools.</div>
+            </div>
+            <div class="space-y-8">
+                <div class="bg-white rounded-xl shadow-md border border-slate-200 p-6">
+                    <p class="font-medium text-slate-800 mb-4"><span class="text-xs font-bold text-slate-400 uppercase block">Reason 1</span>To instill lifelong habits of sustainability.</p>
+                    <textarea id="input-1" rows="3" class="w-full border border-slate-300 rounded-lg p-3 mb-4" placeholder="Write your Method (How)..."></textarea>
+                </div>
+                <div class="bg-white rounded-xl shadow-md border border-slate-200 p-6">
+                    <p class="font-medium text-slate-800 mb-4"><span class="text-xs font-bold text-slate-400 uppercase block">Reason 2</span>To reduce the school’s carbon footprint.</p>
+                    <textarea id="input-2" rows="3" class="w-full border border-slate-300 rounded-lg p-3 mb-4" placeholder="Write your Method (How)..."></textarea>
+                </div>
+                <div class="bg-white rounded-xl shadow-md border border-slate-200 p-6">
+                    <p class="font-medium text-slate-800 mb-4"><span class="text-xs font-bold text-slate-400 uppercase block">Reason 3</span>To generate income for the Student Council.</p>
+                    <textarea id="input-3" rows="3" class="w-full border border-slate-300 rounded-lg p-3 mb-4" placeholder="Write your Method (How)..."></textarea>
+                </div>
+                <div class="bg-slate-800 rounded-xl p-6 md:p-8 text-white mt-12 mb-12">
+                    <h3 class="text-xl font-bold mb-4">Submit Your Work</h3>
+                    <div class="grid md:grid-cols-2 gap-4 mb-6">
+                        <div><label class="block text-xs text-slate-400 mb-1">Name</label><input type="text" id="student-name" class="w-full bg-slate-700 border border-slate-600 rounded p-3 text-white"></div>
+                        <div><label class="block text-xs text-slate-400 mb-1">Class</label><input type="text" id="student-class" class="w-full bg-slate-700 border border-slate-600 rounded p-3 text-white"></div>
+                    </div>
+                    <button onclick="submitToGoogleSheet()" id="submit-btn" class="w-full bg-teal-600 hover:bg-teal-500 text-white font-bold py-4 rounded-lg transition-all">Submit Assignment</button>
+                    <div id="submit-status" class="hidden mt-4 text-center p-3 rounded bg-slate-700 border border-slate-600"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        // --- PASTE YOUR GOOGLE LINK BELOW ---
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyrG3UtGGhpNGfX0OMaK2CjAigehXxSkldvZJClXVrIBH9JevNMg4aU4IzCUpb5C-3_/exec"; 
+        // Example: "[https://script.google.com/.../exec](https://script.google.com/.../exec)"
+        // ------------------------------------
+
+        const questions = [
+            { text: "Schools organize a 'Green Day' every Friday where students bring their own food containers.", type: "Method", explanation: "This describes a specific action/event." },
+            { text: "Trees are planted around the school compound to provide shade and lower the temperature.", type: "Method", explanation: "This describes the physical action." },
+            { text: "The headmaster signs a contract with a local recycling company.", type: "Method", explanation: "This describes a procedural step." },
+            { text: "Reducing paper usage is important because it conserves forest resources.", type: "Reason", explanation: "This explains the logic or benefit." },
+            { text: "Students are required to wash and dry their plastic bottles.", type: "Method", explanation: "This describes physical steps." },
+            { text: "The government implements a 'No Plastic Bag' policy.", type: "Method", explanation: "This describes policy implementation." },
+            { text: "Canteen workers separate organic food scraps into a designated bin.", type: "Method", explanation: "This describes the process." },
+            { text: "It is necessary to educate the youth so they become responsible citizens.", type: "Reason", explanation: "This is a justification." },
+            { text: "A digital scoreboard is used to track the weight of recycled materials.", type: "Method", explanation: "This describes the tool used." },
+            { text: "Schools save money on waste disposal fees by reducing rubbish.", type: "Reason", explanation: "This highlights a financial benefit." }
+        ];
+
+        let currentQIndex = 0, score = 0;
+
+        function loadQuestion() {
+            const q = questions[currentQIndex];
+            document.getElementById('feedback').classList.add('hidden');
+            document.getElementById('next-btn').classList.add('hidden');
+            document.getElementById('question-text').innerText = q.text;
+            document.getElementById('q-current').innerText = currentQIndex + 1;
+            document.getElementById('progress-bar').style.width = `${((currentQIndex)/questions.length)*100}%`;
+            const buttons = document.getElementById('options-container').getElementsByTagName('button');
+            for(let btn of buttons) { btn.disabled = false; btn.classList.remove('opacity-50'); }
+        }
+
+        function checkAnswer(selected) {
+            const q = questions[currentQIndex];
+            const isCorrect = selected === q.type;
+            const buttons = document.getElementById('options-container').getElementsByTagName('button');
+            for(let btn of buttons) { btn.disabled = true; btn.classList.add('opacity-50'); }
+
+            const fb = document.getElementById('feedback');
+            fb.classList.remove('hidden');
+            if (isCorrect) {
+                score++;
+                document.getElementById('score-display').innerText = `Score: ${score}/10`;
+                document.getElementById('score-display').classList.remove('hidden');
+                fb.classList.add('bg-green-100');
+                fb.innerHTML = `<p class="text-green-800 font-bold">Correct!</p><p class="text-green-700 text-sm">${q.explanation}</p>`;
+            } else {
+                fb.classList.add('bg-red-50');
+                fb.innerHTML = `<p class="text-red-800 font-bold">Not quite.</p><p class="text-red-700 text-sm">Correct answer: ${q.type}. ${q.explanation}</p>`;
+            }
+            document.getElementById('next-btn').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentQIndex++;
+            if (currentQIndex < questions.length) loadQuestion();
+            else {
+                document.getElementById('question-container').classList.add('hidden');
+                document.getElementById('quiz-end').classList.remove('hidden');
+                document.getElementById('final-score').innerText = score;
+                document.getElementById('progress-bar').style.width = "100%";
+            }
+        }
+        function scrollToWriting() { document.getElementById('writing-section').scrollIntoView({ behavior: 'smooth' }); }
+
+        function submitToGoogleSheet() {
+            const btn = document.getElementById('submit-btn');
+            const statusDiv = document.getElementById('submit-status');
+            const name = document.getElementById('student-name').value;
+            const sClass = document.getElementById('student-class').value;
+
+            if (!GOOGLE_SCRIPT_URL) { alert("Error: Teacher has not set the Google Script URL."); return; }
+            if (!name || !sClass) { alert("Please enter Name and Class."); return; }
+
+            btn.disabled = true;
+            btn.innerHTML = '<span class="loader mr-2"></span> Submitting...';
+
+            // FIXED: Uses URLSearchParams for reliable submission
+            const params = new URLSearchParams();
+            params.append('name', name);
+            params.append('class', sClass);
+            params.append('score', `${score}/10`);
+            params.append('method1', document.getElementById('input-1').value);
+            params.append('method2', document.getElementById('input-2').value);
+            params.append('method3', document.getElementById('input-3').value);
+
+            fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: params })
+            .then(r => {
+                btn.innerHTML = 'Submitted!';
+                statusDiv.classList.remove('hidden');
+                statusDiv.innerHTML = '<span class="text-green-400 font-bold">Success!</span> Sent to teacher.';
+            })
+            .catch(e => {
+                btn.disabled = false;
+                btn.innerHTML = 'Try Again';
+                statusDiv.classList.remove('hidden');
+                statusDiv.innerHTML = '<span class="text-red-400">Error.</span> Check internet connection.';
+            });
+        }
+        loadQuestion();
+    </script>
+</body>
+</html>
