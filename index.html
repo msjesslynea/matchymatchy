@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MUET Task 2: Reason vs. Method</title>
+  <title>MUET Task 2: Why vs How (Kindness)</title>
 
+  <!-- ✅ Correct CDNs -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -83,7 +85,7 @@
     <div class="mx-auto max-w-4xl px-4 pt-4">
       <div class="glass rounded-2xl px-5 py-4 flex items-center justify-between">
         <div class="flex items-center gap-3">
-          <div class="h-11 w-11 rounded-2xl grid place-items-center bg-gradient-to-br from-teal-400/90 to-indigo-400/80 text-white shadow-sm">
+          <div class="h-11 w-11 rounded-2xl grid place-items-center bg-gradient-to-br from-pink-500/80 to-amber-400/80 text-white shadow-sm">
             <i class="fa-solid fa-pen-nib text-xl"></i>
           </div>
           <div>
@@ -93,8 +95,8 @@
         </div>
 
         <div class="flex items-center gap-2">
-          <span class="chip text-xs font-semibold px-3 py-1 rounded-full text-white bg-gradient-to-r from-emerald-500/70 to-teal-500/70">
-            Unit: Values 💛
+          <span class="chip text-xs font-semibold px-3 py-1 rounded-full text-white bg-gradient-to-r from-pink-500/70 to-amber-500/70">
+            Unit: Social Values 💛
           </span>
         </div>
       </div>
@@ -102,6 +104,7 @@
   </header>
 
   <main class="flex-grow w-full max-w-4xl mx-auto px-4 py-8 space-y-10">
+    <!-- Intro -->
     <section class="glass rounded-2xl p-6">
       <div class="flex items-start justify-between gap-4">
         <div>
@@ -117,18 +120,19 @@
       <div class="grid md:grid-cols-2 gap-4 mt-5">
         <div class="rounded-2xl p-4 border border-blue-200/60 bg-gradient-to-br from-blue-50 to-white">
           <h3 class="grotesk font-bold text-blue-800 mb-1">Reason (Why)</h3>
-          <p class="text-sm text-blue-700">Explains the logic / benefit / outcome.</p>
-          <p class="text-xs text-blue-600 mt-2">Keyword vibe: <span class="font-semibold">because, so that, leads to</span></p>
+          <p class="text-sm text-blue-700">Explains the cause / logic behind the issue.</p>
+          <p class="text-xs text-blue-600 mt-2">Keyword vibe: <span class="font-semibold">because, due to, leads to</span></p>
         </div>
 
         <div class="rounded-2xl p-4 border border-emerald-200/60 bg-gradient-to-br from-emerald-50 to-white">
           <h3 class="grotesk font-bold text-emerald-800 mb-1">Method (How)</h3>
-          <p class="text-sm text-emerald-700">Explains the steps / actions / process.</p>
-          <p class="text-xs text-emerald-600 mt-2">Keyword vibe: <span class="font-semibold">by, through, using, first/next</span></p>
+          <p class="text-sm text-emerald-700">Shows the actions / steps in real life.</p>
+          <p class="text-xs text-emerald-600 mt-2">Keyword vibe: <span class="font-semibold">by, through, first/next, using</span></p>
         </div>
       </div>
     </section>
 
+    <!-- Quiz -->
     <section id="quiz-section">
       <div class="flex flex-wrap gap-3 items-center justify-between mb-4">
         <h2 class="grotesk text-2xl font-bold">Part 1: Categorization Quiz</h2>
@@ -184,6 +188,7 @@
       </div>
     </section>
 
+    <!-- Writing -->
     <section id="writing-section" class="pt-4">
       <div class="glass rounded-2xl p-6 border border-slate-200/60">
         <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
@@ -199,28 +204,32 @@
           <div class="rounded-2xl p-5 border border-slate-200 bg-white/70">
             <p class="text-slate-900 font-semibold mb-3">
               <span class="text-[11px] font-extrabold text-slate-500 uppercase block">Reason 1</span>
-              It builds stronger communities and reduces conflict.
+              People are increasingly stressed and busy, so they have less patience and empathy.
             </p>
-            <textarea id="input-1" rows="3" class="w-full border border-slate-300 rounded-2xl p-4 bg-white" placeholder="Write your Method (How)… Focus on actions/steps (e.g., school or community)."></textarea>
+            <textarea id="input-1" rows="3" class="w-full border border-slate-300 rounded-2xl p-4 bg-white"
+              placeholder="Write your Method (How)… Show what people do in daily life that causes this."></textarea>
           </div>
 
           <div class="rounded-2xl p-5 border border-slate-200 bg-white/70">
             <p class="text-slate-900 font-semibold mb-3">
               <span class="text-[11px] font-extrabold text-slate-500 uppercase block">Reason 2</span>
-              It improves mental health and emotional well-being.
+              Social media and online communication make people less sensitive to others’ feelings.
             </p>
-            <textarea id="input-2" rows="3" class="w-full border border-slate-300 rounded-2xl p-4 bg-white" placeholder="Write your Method (How)… Explain what people can DO to bring kindness back."></textarea>
+            <textarea id="input-2" rows="3" class="w-full border border-slate-300 rounded-2xl p-4 bg-white"
+              placeholder="Write your Method (How)… Describe what happens online that reduces kindness."></textarea>
           </div>
 
           <div class="rounded-2xl p-5 border border-slate-200 bg-white/70">
             <p class="text-slate-900 font-semibold mb-3">
               <span class="text-[11px] font-extrabold text-slate-500 uppercase block">Reason 3</span>
-              It creates a positive culture in schools and workplaces.
+              Modern culture is more individualistic and competitive, so people prioritise themselves over others.
             </p>
-            <textarea id="input-3" rows="3" class="w-full border border-slate-300 rounded-2xl p-4 bg-white" placeholder="Write your Method (How)… Use 'By… / Through… / First… Next…'"></textarea>
+            <textarea id="input-3" rows="3" class="w-full border border-slate-300 rounded-2xl p-4 bg-white"
+              placeholder="Write your Method (How)… Show how self-focus/competition leads to unkind behaviour."></textarea>
           </div>
         </div>
 
+        <!-- Submit -->
         <div class="mt-7 rounded-2xl p-6 text-white bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700">
           <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
             <h3 class="grotesk text-xl font-bold">Submit Your Work</h3>
@@ -250,21 +259,22 @@
 
   <script>
     // --- PASTE YOUR GOOGLE LINK BELOW ---
-    const GOOGLE_SCRIPT_URL = "";
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyrG3UtGGhpNGfX0OMaK2CjAigehXxSkldvZJClXVrIBH9JevNMg4aU4IzCUpb5C-3_/exec";
     // Example: https://script.google.com/macros/s/XXXX/exec
     // ------------------------------------
 
+    // ✅ Updated quiz for: WHY kindness is disappearing (Reason) vs HOW it happens (Method)
     const questions = [
-      { text: "Students take turns being a 'Kindness Monitor' who notices and praises helpful actions.", type: "Method", explanation: "This describes a structured action/role students do." },
-      { text: "A class 'Thank You Wall' is created where students post short notes of appreciation weekly.", type: "Method", explanation: "This is a specific activity with steps." },
-      { text: "Teachers run a monthly peer-mentoring session pairing seniors with juniors.", type: "Method", explanation: "This describes an organised programme." },
-      { text: "Kindness matters because it reduces stress and makes people feel supported.", type: "Reason", explanation: "This explains the benefit/outcome of kindness." },
-      { text: "Students are encouraged to apologise sincerely and fix mistakes instead of blaming others.", type: "Method", explanation: "This describes actions people should do." },
-      { text: "Schools reward kind behaviour to motivate students to repeat it.", type: "Reason", explanation: "This is a justification/logic for why kindness practices work." },
-      { text: "A 'no mocking' rule is enforced, and students report bullying through a simple form.", type: "Method", explanation: "This shows rules + steps for enforcement/reporting." },
-      { text: "We need kindness so society becomes more united and less hostile.", type: "Reason", explanation: "This is a broad justification." },
-      { text: "Students practise active listening in group tasks by using sentence starters like 'I understand you…'.", type: "Method", explanation: "This is a method (what they do + how they do it)." },
-      { text: "Kindness improves teamwork because people communicate better and trust each other.", type: "Reason", explanation: "This explains the logic/benefit." }
+      { text: "People are more stressed and exhausted, so they become impatient and snap at others more easily.", type: "Reason", explanation: "This explains a cause (why kindness is decreasing)." },
+      { text: "Students scroll through short videos during breaks instead of chatting face-to-face.", type: "Method", explanation: "This describes an observable action (how behaviour changes)." },
+      { text: "Online anonymity makes people feel safe to comment rudely without consequences.", type: "Reason", explanation: "This explains the cause behind unkind online behaviour." },
+      { text: "Some people leave hurtful comments because they are not looking at the person’s reaction.", type: "Reason", explanation: "This explains the logic behind reduced empathy." },
+      { text: "In school, students record fights and share them instead of stopping the situation or calling a teacher.", type: "Method", explanation: "This describes a real action people do." },
+      { text: "A competitive mindset makes people see others as rivals, not humans who need support.", type: "Reason", explanation: "This explains why kindness fades in competitive environments." },
+      { text: "People walk past someone who drops items because they are rushing and don’t want to be late.", type: "Method", explanation: "This shows what happens in real life (a behaviour/step)." },
+      { text: "Less family time and weaker community ties reduce chances to learn empathy and respect.", type: "Reason", explanation: "This explains a broader social cause." },
+      { text: "In group work, students exclude a weaker member and assign them the smallest role to protect grades.", type: "Method", explanation: "This describes a specific behaviour." },
+      { text: "When people focus too much on themselves, they stop noticing others’ needs and feelings.", type: "Reason", explanation: "This is a justification for why kindness is disappearing." }
     ];
 
     let currentQIndex = 0, score = 0;
